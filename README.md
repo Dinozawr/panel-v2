@@ -5,12 +5,12 @@ I tried to make it secure, but if you find any security issue please write in th
 </p>
 
 ## Overview
-- OOP PHP
-- PDO + Prepared Statements
-- Reuseable code
+* OOP PHP
+* PDO + Prepared Statements
+* Reuseable code
 
 ## Features
-- Auth
- - Login
- - Register (Invite only)
+* Auth
+ * Login
+ * Register (Invite only)
  
