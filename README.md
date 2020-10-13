@@ -25,8 +25,8 @@
 * In UtilityController
 	* redirect - `Redirects to paramter provided.` *Requires 1 parameter.*
 	* head - `Calls include/head.inc.php in the page. Pass page title into this.` *Requires 1 parameter.*
-	* navbar - `Calls include/navbar.inc.php in the page.
-	* footer - `Calls include/footer.inc.php in the page.
+	* navbar - `Calls include/navbar.inc.php in the page.`
+	* footer - `Calls include/footer.inc.php in the page.`
 	
-> Change DB info in core/Database.php
+> Change DB info in core/Database.php <br>
 > Change Site info in core/Config.php
