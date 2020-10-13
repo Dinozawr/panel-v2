@@ -13,12 +13,14 @@
 * PDO
 * Prepared Statements
 
+---
 
 ### Features
 1. Auth
 	* Login
 	* Register (Invite only)
 
+---
 
 ### Functions 
 ###### List of functions and methods which you should know, to modify
@@ -32,6 +34,7 @@
 	* navbar - `Calls include/navbar.inc.php in the page.`
 	* footer - `Calls include/footer.inc.php in the page.`
 
+---
 
 > Change DB info in core/Database.php <br>
 > Change Site info in core/Config.php
