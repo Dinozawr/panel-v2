@@ -3,12 +3,18 @@
 
 > I tried to make it secure as possible but if you find any security issue please write in the 'issues' tab.
 
-## Overview
+### Overview
+###### Technologies
 * OOP PHP
-* PDO + Prepared Statements
-* Reuseable code
+* HTML5
+* Bootstrap
+###### RDBMS
+* PDO
+* Prepared Statements
 
-## Features
+### Features
 1. Auth
 	* Login
 	* Register (Invite only)
+	
+### Functions
