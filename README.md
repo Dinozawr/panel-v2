@@ -37,6 +37,7 @@
 	* head - `Calls include/head.inc.php in the page. Pass page title into this.` *Requires 1 parameter.*
 	* navbar - `Calls include/navbar.inc.php in the page.`
 	* footer - `Calls include/footer.inc.php in the page.`
+	* display - `Sanitzes the parameter with htmlspecialchars.` *Requires 1 parameter.*
 
 ---
 
