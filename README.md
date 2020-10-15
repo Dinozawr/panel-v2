@@ -9,7 +9,7 @@
   <img src="https://i.imgur.com/VB2ial8.png" />
 </p>
 
-###### Technologies
+###### TECHNOLOGIES
 * OOP PHP
 * HTML5
 * Bootstrap
