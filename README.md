@@ -29,9 +29,9 @@
 ### Functions 
 ###### List of functions and methods which you should know, to modify
 * In SessionController
-	* logged - `Checks if user is logged in, if not redirects to login page.` 
-	* notLogged - `Checks if user is **not** logged in, if logged in, redirects to index page.`
-	* banned - `Checks if user is banned.`
+	* isLogged - `Checks if user is logged in, if not redirects to login page.` 
+	* isNotLogged - `Checks if user is **not** logged in, if logged in, redirects to index page.`
+	* isBanned - `Checks if user is banned.`
 * In UtilityController
 	* redirect - `Redirects to paramter provided.` *Requires 1 parameter.*
 	* head - `Calls include/head.inc.php in the page. Pass page title into this.` *Requires 1 parameter.*
