@@ -16,6 +16,10 @@
 ###### RDBMS
 * PDO
 * Prepared Statements
+###### SECURITY
+* SQL injection proof
+* XSS proof
+* User does not interact with DB directly. All requests are handled by Controllers before sending data to Models.
 
 ---
 
@@ -43,3 +47,9 @@
 
 > Change DB info in core/Database.php <br>
 > Change Site info in core/Config.php
+
+---
+
+### Credits
+* https://www.youtube.com/playlist?list=PL0eyrZgxdwhypQiZnYXM7z7-OTkcMgGPh
+* https://github.com/Darynazar/login-register-script-mvc
