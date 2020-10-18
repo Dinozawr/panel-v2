@@ -1,7 +1,8 @@
-<h1 align="center">znix.cc WebPanel W.I.P</h1>
+<h2 align="center">This repo is W.I.P, this is no where near to the final product.</h2>
+<h1 align="center">znix.cc WebPanel</h1>
 <p align="center">Web Panel for your CS:GO cheat.</p>
 
-> I tried to make it secure as possible but if you find any security issue please write in the 'issues' tab.
+> Contribution is greatly appriciated. Make a pull request or message me on discord znix#1337 (don't add me just message me).
 
 
 ### Overview
