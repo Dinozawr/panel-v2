@@ -1,0 +1,39 @@
+:root {
+    --bg-main: rgb(30, 30, 47);
+    --bg-secondary: rgb(18, 19, 31);
+    --bg-contrast: rgb(24, 26, 48);
+    --accent: #e14eca;
+}
+
+.bg-dark {
+    background-color: var(--bg-secondary) !important;
+}
+
+.card {
+    background-color: var(--bg-secondary) !important;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
+    border-top: 2px solid var(--accent);
+}
+
+.alert {
+    border: none;
+}
+
+.alert-primary,
+.rounded {
+    background-color: var(--bg-secondary) !important;
+    color: #eee;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
+    border-top: 2px solid var(--accent);
+}
+
+.btn-dark {
+    background-color: var(--bg-contrast) !important;
+}
+
+body {
+    background-color: var(--bg-main) !important;
+    transition: all .5s cubic-bezier(.685, .0473, .346, 1);
+    overflow-x: hidden;
+    color: white;
+}
