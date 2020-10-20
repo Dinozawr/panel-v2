@@ -35,7 +35,7 @@
 ###### List of functions and methods which you should know, to modify
 * In SessionController
 	* isLogged - `Returns true if user is logged, else false.` 
-	* isBanned - `Returns true if user is admin, else false.`
+	* isAdmin - `Returns true if user is admin, else false.`
 	* isBanned - `Checks if user is banned.`
 * In UtilityController
 	* redirect - `Redirects to paramter provided.` *Requires 1 parameter.*
