@@ -5,6 +5,12 @@
     --accent: #e14eca;
 }
 
+body {
+    background-color: var(--bg-main) !important;
+    overflow-x: hidden;
+    color: white;
+}
+
 .bg-dark {
     background-color: var(--bg-secondary) !important;
 }
@@ -27,13 +33,22 @@
     border-top: 2px solid var(--accent);
 }
 
-.btn-dark {
-    background-color: var(--bg-contrast) !important;
+.btn-outline-primary {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
 }
 
-body {
-    background-color: var(--bg-main) !important;
-    transition: all .5s cubic-bezier(.685, .0473, .346, 1);
-    overflow-x: hidden;
-    color: white;
+.btn-outline-primary:hover {
+    color: white !important;
+    background-color: var(--accent) !important;
+}
+
+.form-control {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--accent) !important;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
 }

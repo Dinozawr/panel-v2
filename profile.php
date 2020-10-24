@@ -1,15 +1,23 @@
 <?php
-include 'app/require.php';
+
+require_once 'app/require.php';
+require_once 'app/controllers/CheatController.php';
 
 $user = new UserController;
+$cheat = new CheatController;
 
 Session::init();
 
-if (Session::isLogged()) { Util::redirect('/'); }
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { $error = $user->loginUser($_POST); }
+if (!Session::isLogged()) { Util::redirect('/login'); }
 
-Util::head('Login');
+$uid = Session::get("uid");
+$username = Session::get("username");
+$admin = Session::get("admin");
+
+Util::banCheck();
+Util::head($username);
 Util::navbar();
+
 
 ?>
 
@@ -54,5 +62,4 @@ Util::navbar();
 	</div>
 
 </section>
-
 <?php Util::footer(); ?>

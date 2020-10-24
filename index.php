@@ -8,28 +8,26 @@ $cheat = new CheatController;
 
 Session::init();
 
-if (!Session::isLogged()) {
-	Utility::redirect("login.php");
-}
+if (!Session::isLogged()) { Util::redirect('/login'); }
 
-$id = Session::get("id");
+$uid = Session::get("uid");
 $username = Session::get("username");
 $admin = Session::get("admin");
 
-Utility::head($username);
-Utility::navbar();
-
+Util::banCheck();
+Util::head($username);
+Util::navbar();
 
 ?>
 
-<div class="container mt-2">
+<section class="container mt-2">
 
 	<div class="row">
 
 		<!--Welome message-->
 		<div class="col-12 mt-3 mb-2">
 			<div class="alert alert-primary" role="alert">
-				Welcome, <b><?php Utility::display($username) ?></b>
+				Welcome, <b><?php Util::display($username) ?></b>
 			</div>
 		</div>
 
@@ -38,7 +36,7 @@ Utility::navbar();
 		<div class="col-lg-9 col-md-12">
 			<div class="rounded p-3 mb-3">
 				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-comments"></i> Chatbox</div>
-				<?php print_r($cheat->getCheatData()); ?>
+				Debug: <?php print_r($user->getNewUser()); ?>
 			</div>
 		</div>
 
@@ -49,14 +47,14 @@ Utility::navbar();
 				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-exclamation-circle"></i> Status</div>
 				<div class="row text-muted">
 
-					<!--Total Members-->
+					<!--Detected // Undetected-->
 					<div class="col-12 clearfix">
-						Status: <p class="float-right mb-0"><?php Utility::display($cheat->getCheatData()->status); ?></p>
+						Status: <p class="float-right mb-0"><?php Util::display($cheat->getCheatData()->status); ?></p>
 					</div>
 
-					<!--Latest Member-->
+					<!--Cheat version-->
 					<div class="col-12 clearfix">
-						Version: <p class="float-right mb-0"><?php Utility::display($cheat->getCheatData()->version); ?></p>
+						Version: <p class="float-right mb-0"><?php Util::display($cheat->getCheatData()->version); ?></p>
 					</div>
 
 				</div>
@@ -70,14 +68,14 @@ Utility::navbar();
 				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-chart-area"></i> Statistics</div>
 				<div class="row text-muted">
 
-					<!--Total Members-->
+					<!--Total Users-->
 					<div class="col-12 clearfix">
-						Members: <p class="float-right mb-0"><?php Utility::display($user->getUserCount()); ?></p>
+						Users: <p class="float-right mb-0"><?php Util::display($user->getUserCount()); ?></p>
 					</div>
 
-					<!--Latest Member-->
+					<!--Latest User-->
 					<div class="col-12 clearfix">
-						Latest Member: <p class="float-right mb-0"><?php Utility::display($user->getNewUser()); ?></p>
+						Latest User: <p class="float-right mb-0"><?php Util::display($user->getNewUser()); ?></p>
 					</div>
 
 				</div>
@@ -86,5 +84,6 @@ Utility::navbar();
 
 
 	</div>
-</div>
-<?php Utility::footer(); ?>
+
+</section>
+<?php Util::footer(); ?>

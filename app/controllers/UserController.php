@@ -12,7 +12,7 @@ class UserController extends Users {
 
 		Session::init();
 		Session::set("login", true);
-		Session::set("id", $user->id);
+		Session::set("uid", $user->uid);
 		Session::set("username", $user->username);
 		Session::set("admin", $user->admin);
 		Session::set("hwid", $user->hwid);
@@ -29,7 +29,7 @@ class UserController extends Users {
 	}
 
 
-	public function getRegister($data) {
+	public function registerUser($data) {
 
 		// Bind login data 
 		$username = trim($data['username']);
@@ -56,7 +56,7 @@ class UserController extends Users {
 
 		} elseif (!preg_match($usernameValidation, $username)) {
 
-			return $userError  = "Username must only contain alphanumerical, dashes, Underscorers!";
+			return $userError  = "Username must only contain alphanumericals!";
 
 		} else {
 
@@ -125,7 +125,7 @@ class UserController extends Users {
 			// Session start
 			if ($result) {
 
-				Utility::redirect("login.php");
+				Util::redirect("login.php");
 
 			} else {
 
@@ -138,7 +138,7 @@ class UserController extends Users {
 	}
 
 
-	public function getLogin($data) {
+	public function loginUser($data) {
 
 		// Bind login data 
 		$username = trim($data['username']);
@@ -170,7 +170,7 @@ class UserController extends Users {
 
 				// Session start
 				$this->createUserSession($result);
-				Utility::redirect("index.php");
+				Util::redirect("index.php");
 
 			} else {
 
@@ -188,7 +188,18 @@ class UserController extends Users {
 	}
 
 
+	public function getBannedUserCount() {
+		return $this->bannedUserCount();
+	}
+
+
+	public function getActiveUserCount() {
+		return $this->activeUserCount();
+	}
+	
+
 	public function getNewUser() {
 		return $this->newUser();
 	}
+
 }

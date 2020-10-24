@@ -13,5 +13,5 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php SITE_ROOT ?>/assets/css/custom.css" />
 
-	<title><?php echo SITE_NAME . ' | ' . $title; ?></title>
+	<title><?php echo($title . ' &ndash; ' . SITE_NAME); ?></title>
 </head>

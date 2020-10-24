@@ -59,5 +59,20 @@ class Session {
 		}
 
 	}
+
+
+	public static function isBanned() {
+
+		if (isset($_SESSION["login"]) && $_SESSION["banned"] == 1 && $_SESSION["admin"] == 0) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
 		
 }

@@ -4,7 +4,7 @@
 
 		<div class="container">
 
-			<a class="navbar-brand" href="<?php echo SITE_URL ?>"><?php Utility::display(SITE_NAME); ?></a>
+			<a class="navbar-brand" href="<?php echo SITE_URL ?>"><?php Util::display(SITE_NAME); ?></a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -25,13 +25,13 @@
 						<?php if (Session::isAdmin() == true) : ?>
 							
 							<li class="nav-item">
-								<a class="nav-link" href="admin.php">Admin</a>
+								<a class="nav-link" href="/admin">Admin</a>
 							</li>
 
 						<?php endif; ?>
 
 						<li class="nav-item">
-							<a class="nav-link" href="logout.php">Logout</a>
+							<a class="nav-link" href="/logout.php">Logout</a>
 						</li>
 
 					<?php else : ?>

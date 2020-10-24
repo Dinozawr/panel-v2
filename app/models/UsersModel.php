@@ -11,7 +11,7 @@ class Users extends Database {
 	// Check if username exists
 	protected function usernameCheck($username) {
 		
-		$this->prepare('SELECT * FROM users WHERE username = ?');
+		$this->prepare('SELECT * FROM `users` WHERE `username` = ?');
 		$this->statement->execute([$username]);
 
 		if ($this->statement->rowCount() > 0) {
@@ -29,7 +29,7 @@ class Users extends Database {
 	// Check if invite code is valid
 	protected function invCodeCheck($invCode) {
 
-		$this->prepare('SELECT * FROM invites WHERE code = ? AND used = 0');
+		$this->prepare('SELECT * FROM `invites` WHERE `code` = ? AND `used` = 0');
 		$this->statement->execute([$invCode]);
 
 		if ($this->statement->rowCount() > 0) {
@@ -49,7 +49,7 @@ class Users extends Database {
 	protected function login($username, $password) {
 		
 		// fetch username
-		$this->prepare('SELECT * FROM users WHERE username = ?');
+		$this->prepare('SELECT * FROM `users` WHERE `username` = ?');
 		$this->statement->execute([$username]);
 		$row = $this->statement->fetch();
 		
@@ -77,14 +77,19 @@ class Users extends Database {
 	// Register - Sends data to DB
 	protected function register($username, $hashedPassword, $invCode) {
 
+		// Get inviter's username
+		$this->prepare('SELECT `createdBy` FROM `invites` WHERE `code` = ?');
+		$this->statement->execute([$invCode]);
+		$row = $this->statement->fetch();
+
 		// Sending the query - Register user
-		$this->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
+		$this->prepare('INSERT INTO `users` (`username`, `password`, `invitedBy`) VALUES (?, ?, ?)');
 
 		// If user registered
-		if ($this->statement->execute([$username, $hashedPassword])) {
+		if ($this->statement->execute([$username, $hashedPassword, $row->createdBy])) {
 
-			// Setting invite code to used
-			$this->prepare('UPDATE invites SET used = 1 WHERE code = ?');
+			// Set invite code to used
+			$this->prepare('UPDATE `invites` SET `used` = 1 WHERE `code` = ?');
 			$this->statement->execute([$invCode]);
 			return true;
 
@@ -100,7 +105,29 @@ class Users extends Database {
 	// Get number of users
 	protected function userCount() {
 		
-		$this->prepare('SELECT * FROM users');
+		$this->prepare('SELECT * FROM `users`');
+		$this->statement->execute();
+		$result = $this->statement->rowCount();
+		return $result;
+
+	}
+
+
+	// Get number of users
+	protected function bannedUserCount() {
+		
+		$this->prepare('SELECT * FROM `users` WHERE `banned` =  1');
+		$this->statement->execute();
+		$result = $this->statement->rowCount();
+		return $result;
+
+	}
+
+	
+	// Get number of users
+	protected function activeUserCount() {
+		
+		$this->prepare('SELECT * FROM `users` WHERE `active` = 1');
 		$this->statement->execute();
 		$result = $this->statement->rowCount();
 		return $result;
@@ -111,7 +138,7 @@ class Users extends Database {
 	// Get name of latest
 	protected function newUser() {
 		
-		$this->prepare('SELECT `username` FROM `users` WHERE id = (SELECT MAX(id) FROM `users`)');
+		$this->prepare('SELECT `username` FROM `users` WHERE `uid` = (SELECT MAX(`uid`) FROM `users`)');
 		$this->statement->execute();
 		$result = $this->statement->fetch();
 		return $result->username;
