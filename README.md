@@ -39,21 +39,23 @@
 
 ### Functions 
 ###### List of functions and methods which you should know, to modify
-* In SessionController
+* SessionController
 	* isLogged - `Returns true if user is logged, else false.` 
 	* isAdmin - `Returns true if user is admin, else false.`
-	* isBanned - `Checks if user is banned.`
-* In UtilityController
-	* redirect - `Redirects to paramter provided.` *Requires 1 parameter.*
-	* head - `Calls include/head.inc.php in the page. Pass page title into this.` *Requires 1 parameter.*
+	* isBanned - `Returns true if user is banned, else false.`
+* UtilController
 	* navbar - `Calls include/navbar.inc.php in the page.`
 	* footer - `Calls include/footer.inc.php in the page.`
+	* head - `Calls include/head.inc.php in the page. Pass page title into this.` *Requires 1 parameter.*
+	* redirect - `Redirects to paramter provided.` *Requires 1 parameter.*
 	* display - `Sanitzes the parameter with htmlspecialchars.` *Requires 1 parameter.*
 
 ---
 
+### Installation 
 > Change DB info in core/Database.php <br>
-> Change Site info in core/Config.php
+> Import DB.sql file <br>
+> Change Site info in core/Config.php 
 
 ---
 
