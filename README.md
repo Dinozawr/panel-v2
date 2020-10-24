@@ -25,17 +25,16 @@
 ---
 
 ### Features
-1. Auth
-	* Login
-	* Register (Invite only)
+###### AUTH
+* Login
+* Register (Invite only)
+###### ADMIN PANEL
+* Generate invite code
+* Ban/unban user
+* Make user admin/non-admin
+* Activate/deactivate sub
+* Reset HWID
 
-2. Admin Panel
-	* Generate invite code
-  	* Ban/unban user
-	* Make user admin/non-admin
-  	* Activate/deactivate sub
-  	* Reset HWID
-	
 ---
 
 ### Functions 
