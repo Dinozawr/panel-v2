@@ -28,7 +28,8 @@
 1. Auth
 	* Login
 	* Register (Invite only)
-2 Admin Panel
+
+2. Admin Panel
 	* Generate invite code
   	* Ban/unban user
 	* Make user admin/non-admin
