@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (isset($_POST["genInv"])) { 
 		$admin->getInvCodeGen($username); 
-		Util::redirect("invites.php"); 
+		Util::redirect('invites'); 
 	}
 
 }

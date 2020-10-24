@@ -1,27 +1,24 @@
 <?php
 
 require_once 'app/require.php';
-require_once 'app/controllers/CheatController.php';
-
-$user = new UserController;
-$cheat = new CheatController;
 
 Session::init();
 
 if (!Session::isLogged()) { Util::redirect('/login'); }
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') { $error = $user->loginUser($_POST); }
 
 $uid = Session::get("uid");
 $username = Session::get("username");
 $admin = Session::get("admin");
+$active = Session::get("active");
 
 Util::banCheck();
 Util::head($username);
 Util::navbar();
 
-
 ?>
 
-<section class="container mt-2">
+<main class="container mt-2">
 
 	<div class="row justify-content-center">
 
@@ -39,27 +36,31 @@ Util::navbar();
 			<div class="card">
 				<div class="card-body">
 
-					<h4 class="card-title text-center">Login</h4>
-
-					<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-
-						<div class="form-group">
-							<input type="text" class="form-control form-control-sm" placeholder="Username" name="username" required>
+					<div class="h5 border-bottom border-secondary pb-1"><?php Util::display($username); ?></div>
+					<div class="row">
+						<div class="col-12 clearfix">
+							UID: <p class="float-right mb-0"><?php Util::display($uid); ?></p>
 						</div>
 
-						<div class="form-group">
-							<input type="password" class="form-control form-control-sm" placeholder="Password" name="password" required>
+						<div class="col-12 clearfix">
+
+						
+							Sub:
+							<p class="float-right mb-0">
+								<?php if ($active == '1') : ?>
+									<i class="fas fa-check-circle"></i>
+								<?php else : ?>
+									<i class="fas fa-times-circle"></i>
+								<?php endif; ?>
+							</p>
+
 						</div>
-
-						<button class="btn btn-outline-primary btn-block" id="submit" type="submit" value="submit">Login</button>
-
-					</form>
-
+					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
 
-</section>
+</main>
 <?php Util::footer(); ?>

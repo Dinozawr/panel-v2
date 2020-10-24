@@ -5,7 +5,7 @@ class Database {
 	private $dbHost = "localhost";
 	private $dbUser = "root";
 	private $dbPass = "";
-	private $dbName = "users";
+	private $dbName = "test";
 
 	protected $statement;
 	protected $error;

@@ -23,25 +23,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_POST["resetHWID"])) { 
 		$rowUID = $_POST['resetHWID'];
 		$admin->resetHWID($rowUID); 
-		Util::redirect("users.php"); 
+		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setActive"])) { 
 		$rowUID = $_POST['setActive'];
 		$admin->setActive($rowUID); 
-		Util::redirect("users.php"); 
+		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setBanned"])) { 
 		$rowUID = $_POST['setBanned'];
 		$admin->setBanned($rowUID); 
-		Util::redirect("users.php"); 
+		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setAdmin"])) { 
 		$rowUID = $_POST['setAdmin'];
 		$admin->setAdmin($rowUID); 
-		Util::redirect("users.php"); 
+		Util::redirect('users'); 
 	}
 
 }
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<tbody>
 
 					<!--Loop for number of rows-->
-					<?php foreach ($userList as $row) : ?> 
+					<?php foreach ($userList as $row) : ?>
 						<tr>
 
 							<th scope="row" class="text-center"><?php Util::display($row->uid); ?></th>

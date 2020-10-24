@@ -6,7 +6,8 @@ $user = new UserController;
 
 Session::init();
 
-if (!Session::isLogged()) { Util::redirect('login'); }
+if (!Session::isLogged()) { Util::redirect('/login'); }
+if (!Session::isBanned()) { Util::redirect('/index'); }
 
 $uid = Session::get("uid");
 $username = Session::get("username");
@@ -19,7 +20,7 @@ Util::navbar();
 
 ?>
 
-<section class="container mt-2">
+<main class="container mt-2">
 
 	<div class="row">
 
@@ -32,5 +33,5 @@ Util::navbar();
 
 	</div>
 
-</section>
+</main>
 <?php Util::footer(); ?>

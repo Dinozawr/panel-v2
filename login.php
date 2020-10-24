@@ -13,7 +13,7 @@ Util::navbar();
 
 ?>
 
-<section class="container mt-2">
+<main class="container mt-2">
 
 	<div class="row justify-content-center">
 
@@ -53,6 +53,6 @@ Util::navbar();
 
 	</div>
 
-</section>
+</main>
 
 <?php Util::footer(); ?>

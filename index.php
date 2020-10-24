@@ -20,7 +20,7 @@ Util::navbar();
 
 ?>
 
-<section class="container mt-2">
+<main class="container mt-2">
 
 	<div class="row">
 
@@ -85,5 +85,5 @@ Util::navbar();
 
 	</div>
 
-</section>
+</main>
 <?php Util::footer(); ?>

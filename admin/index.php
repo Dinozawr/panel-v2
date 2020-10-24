@@ -24,7 +24,7 @@ Util::navbar();
 
 
 		<!--Total Users-->
-		<div class="col-xl-3 col-sm-6 col-xs-12">
+		<div class="col-xl-3 col-sm-6 col-xs-12 mt-3">
 			<div class="card">
 				<div class=" card-body row">
 					<div class="col-6 text-center">
@@ -41,7 +41,7 @@ Util::navbar();
 
 		
 		<!--Newest registered user-->
-		<div class="col-xl-3 col-sm-6 col-xs-12">
+		<div class="col-xl-3 col-sm-6 col-xs-12 mt-3">
 			<div class="card">
 				<div class=" card-body row">
 					<div class="col-6 text-center">
@@ -58,7 +58,7 @@ Util::navbar();
 
 		
 		<!--Total banned users-->
-		<div class="col-xl-3 col-sm-6 col-xs-12">
+		<div class="col-xl-3 col-sm-6 col-xs-12 mt-3">
 			<div class="card">
 				<div class=" card-body row">
 					<div class="col-6 text-center">
@@ -75,7 +75,7 @@ Util::navbar();
 
 		
 		<!--Total active sub users-->
-		<div class="col-xl-3 col-sm-6 col-xs-12">
+		<div class="col-xl-3 col-sm-6 col-xs-12 mt-3">
 			<div class="card">
 				<div class=" card-body row">
 					<div class="col-6 text-center">

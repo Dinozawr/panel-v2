@@ -13,7 +13,7 @@ Util::navbar();
 
 ?>
 
-<section class="container mt-2">
+<main class="container mt-2">
 
 	<div class="row justify-content-center">
 
@@ -61,7 +61,7 @@ Util::navbar();
 
 	</div>
 
-</section>
+</main>
 
 <script src="<?php SITE_ROOT ?>/assets/js/matchPass.js"></script>
 <?php Util::footer(); ?>

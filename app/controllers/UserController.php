@@ -14,9 +14,12 @@ class UserController extends Users {
 		Session::set("login", true);
 		Session::set("uid", $user->uid);
 		Session::set("username", $user->username);
+		//Session::set("hwid", $user->hwid);
 		Session::set("admin", $user->admin);
-		Session::set("hwid", $user->hwid);
+		Session::set("active", $user->active);
 		Session::set("banned", $user->banned);
+		//Session::set("invitedBy", $user->invitedBy);
+		//Session::set("createdBy", $user->createdBy);
 
 	}
 
@@ -125,7 +128,7 @@ class UserController extends Users {
 			// Session start
 			if ($result) {
 
-				Util::redirect("login.php");
+				Util::redirect('/login');
 
 			} else {
 
@@ -170,7 +173,7 @@ class UserController extends Users {
 
 				// Session start
 				$this->createUserSession($result);
-				Util::redirect("index.php");
+				Util::redirect('/');
 
 			} else {
 
