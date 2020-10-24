@@ -23,30 +23,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_POST["resetHWID"])) { 
 		$rowUID = $_POST['resetHWID'];
 		$admin->resetHWID($rowUID); 
-		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setActive"])) { 
 		$rowUID = $_POST['setActive'];
 		$admin->setActive($rowUID); 
-		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setBanned"])) { 
 		$rowUID = $_POST['setBanned'];
 		$admin->setBanned($rowUID); 
-		Util::redirect('users'); 
 	}
 
 	if (isset($_POST["setAdmin"])) { 
 		$rowUID = $_POST['setAdmin'];
 		$admin->setAdmin($rowUID); 
-		Util::redirect('users'); 
 	}
 
+	header("location: users.php");
+
 }
-
-
 
 ?>
 
