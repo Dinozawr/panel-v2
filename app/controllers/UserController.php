@@ -128,7 +128,7 @@ class UserController extends Users {
 			// Session start
 			if ($result) {
 
-				Util::redirect('/login');
+				Util::redirect('/login.php');
 
 			} else {
 
@@ -178,6 +178,70 @@ class UserController extends Users {
 			} else {
 
 				return 'Username/Password is wrong.';
+
+			}
+
+		}
+
+	}
+
+
+	public function UpdateUserPass($data) {
+		
+		$username = Session::get("username");
+		$currentPassword = $data['currentPassword'];
+		$newPassword = $data['newPassword'];
+		$confirmPassword = $data['confirmPassword'];
+
+
+		// Empty error vars
+		$passError = "";
+
+
+		// Validate password
+		if (empty($currentPassword)) {
+
+			return $passError  = "Please enter a password.";
+
+		}
+
+
+		if (empty($newPassword)) {
+
+			return $passError  = "Please enter a password.";
+
+		} elseif (strlen($newPassword) < 4) {
+
+			return $passError  = "Password is too short.";
+
+		} 
+
+
+		if (empty($confirmPassword)) {
+
+			return $passError  = "Please enter a password.";
+
+		} elseif ($confirmPassword != $newPassword) {
+
+			return $passError  = "Passwords do not match, please try again.";
+
+		}
+
+
+		// Check if all errors are empty
+		if (empty($passError)) {
+
+			// Hashing the password
+			$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+			$result = $this->UpdatePass($currentPassword, $hashedPassword, $username);
+
+			if ($result) {
+
+				Util::redirect('/logout.php');
+
+			} else {
+
+				return 'Your current does not match.';
 
 			}
 

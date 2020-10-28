@@ -102,6 +102,32 @@ class Users extends Database {
 	}
 
 
+	protected function UpdatePass($currentPassword, $hashedPassword, $username) {
+
+		
+
+		$this->prepare('SELECT * FROM `users` WHERE `username` = ?');
+		$this->statement->execute([$username]);
+		$row = $this->statement->fetch();
+
+		// Fetch current password from database
+		$currentHashedPassword = $row->password;
+
+		if (password_verify($currentPassword, $currentHashedPassword)) {
+
+			$this->prepare('UPDATE `users` SET `password` = ? WHERE `username` = ?');
+			$this->statement->execute([$hashedPassword, $username]);
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+
 	// Get number of users
 	protected function userCount() {
 		

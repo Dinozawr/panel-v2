@@ -6,12 +6,10 @@ $user = new UserController;
 
 Session::init();
 
-if (!Session::isLogged()) { Util::redirect('/login'); }
-if (!Session::isBanned()) { Util::redirect('/index'); }
+if (!Session::isLogged()) { Util::redirect('/login.php'); }
+if (!Session::isBanned()) { Util::redirect('/index.php'); }
 
-$uid = Session::get("uid");
 $username = Session::get("username");
-$admin = Session::get("admin");
 
 Util::banCheck();
 Util::head($username);

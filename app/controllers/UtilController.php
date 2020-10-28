@@ -75,7 +75,7 @@ class Util {
 			// Prevents infinite redirect loop
 			if (basename($_SERVER['PHP_SELF']) != 'banned.php') {
 
-				Util::redirect('/banned');
+				Util::redirect('/banned.php');
 
 			}
 
@@ -89,7 +89,7 @@ class Util {
 
 		if (!Session::isAdmin()) {
 
-			Util::redirect('/index');
+			Util::redirect('/index.php');
 
 		}
 

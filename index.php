@@ -8,7 +8,7 @@ $cheat = new CheatController;
 
 Session::init();
 
-if (!Session::isLogged()) { Util::redirect('/login'); }
+if (!Session::isLogged()) { Util::redirect('/login.php'); }
 
 $uid = Session::get("uid");
 $username = Session::get("username");

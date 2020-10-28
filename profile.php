@@ -2,10 +2,12 @@
 
 require_once 'app/require.php';
 
+$user = new UserController;
+
 Session::init();
 
-if (!Session::isLogged()) { Util::redirect('/login'); }
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') { $error = $user->loginUser($_POST); }
+if (!Session::isLogged()) { Util::redirect('/login.php'); }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { $error = $user->UpdateUserPass($_POST); }
 
 $uid = Session::get("uid");
 $username = Session::get("username");
@@ -31,6 +33,37 @@ Util::navbar();
 			<?php endif; ?>
 
 		</div>
+
+
+		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-xs-12 my-3">
+		
+		<div class="card">
+				<div class="card-body">
+
+					<h4 class="card-title text-center">Update Password</h4>
+
+					<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+
+						<div class="form-group">
+							<input type="password" class="form-control form-control-sm" placeholder="Current Password" name="currentPassword" required>
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control form-control-sm" placeholder="New Password" name="newPassword" required>
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control form-control-sm" placeholder="Confirm password" name="confirmPassword" required>
+						</div>
+
+						<button class="btn btn-outline-primary btn-block" id="submit" type="submit" value="submit">Update</button>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
 
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-xs-12 my-3">
 			<div class="card">
