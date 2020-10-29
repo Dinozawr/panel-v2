@@ -22,6 +22,14 @@ CREATE TABLE IF NOT EXISTS `invites` (
   UNIQUE KEY `uid` (`uid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `subscription`;
+CREATE TABLE IF NOT EXISTS `subscription` (
+  `code` varchar(255) NOT NULL,
+  `createdBy` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `hwid` varchar(255) DEFAULT NULL,
   `admin` int(1) NOT NULL DEFAULT 0,
-  `active` int(1) NOT NULL DEFAULT 0,
+  `sub` date DEFAULT NULL,
   `banned` int(1) NOT NULL DEFAULT 0,
   `invitedBy` varchar(255) NOT NULL,
   `createdAt` timestamp NULL DEFAULT current_timestamp(),
@@ -40,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 COMMIT;
 
-INSERT INTO `users` (`uid`, `username`, `password`, `hwid`, `admin`, `active`, `banned`, `invitedBy`, `createdAt`) VALUES
-(1, 'admin', '$2y$10$X3K9Vm/RBWfTl.drTi4//OtiyB.s9uaRmia0q2sLzjaET.im3sfvu', NULL, 1, 1, 0, '', '2020-10-20 08:29:37');
+INSERT INTO `users` (`uid`, `username`, `password`, `hwid`, `admin`, `sub`,`banned`, `invitedBy`, `createdAt`) VALUES
+(1, 'admin', '$2y$10$X3K9Vm/RBWfTl.drTi4//OtiyB.s9uaRmia0q2sLzjaET.im3sfvu', NULL, 1, '2020-10-29', 0, '', '2020-10-20 08:29:37');
 COMMIT;
 
 INSERT INTO `cheat` (`status`, `version`, `maintenance`) VALUES

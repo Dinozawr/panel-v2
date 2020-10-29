@@ -8,7 +8,6 @@ $admin = new AdminController;
 
 Session::init();
 
-$uid = Session::get("uid");
 $username = Session::get("username");
 
 Util::adminCheck();

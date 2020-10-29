@@ -24,10 +24,27 @@ class AdminController extends Admin {
 
 
 	//
+	public function getSubCodeArray() {
+
+		return $this->subCodeArray();
+
+	}
+
+
+	//
 	public function getInvCodeGen($username) {
 
 		$code = Util::randomCode(20);
 		return $this->invCodeGen($code, $username);
+
+	}
+
+
+	//
+	public function getSubCodeGen($username) {
+
+		$code = Util::randomCode(20);
+		return $this->subCodeGen($code, $username);
 
 	}
 
@@ -38,15 +55,6 @@ class AdminController extends Admin {
 		return $this->HWID($uid);
 
 	}
-
-
-	// 
-	public function setActive($uid) {
-		
-		return $this->active($uid);
-
-	}
-
 
 	// 
 	public function setBanned($uid) {

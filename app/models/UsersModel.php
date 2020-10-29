@@ -26,6 +26,7 @@ class Users extends Database {
 
 	}
 
+
 	// Check if invite code is valid
 	protected function invCodeCheck($invCode) {
 
@@ -41,6 +42,44 @@ class Users extends Database {
 			return false; 
 
 		}
+
+	}
+
+
+	// Check if sub code is valid
+	protected function subCodeCheck($subCode) {
+
+		$this->prepare('SELECT * FROM `subscription` WHERE `code` = ?');
+		$this->statement->execute([$subCode]);
+	
+		if ($this->statement->rowCount() > 0) {
+	
+			return true;
+	
+		} else {
+	
+			return false; 
+	
+		}
+	
+	}
+
+
+	// Check if sub is active
+	protected function subActiveCheck($username) {
+
+		$date = new DateTime(); // Get current date
+		$currentDate = $date->format('Y-m-d'); // Format Year-Month-Day
+
+		$this->prepare('SELECT `sub` FROM `users` WHERE `username` = ?');
+		$this->statement->execute([$username]);
+		$subTime = $this->statement->fetch();
+
+		// Pasted from https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_date_diff
+		$date1 = date_create($currentDate); // Convert String to date format
+		$date2 = date_create($subTime->sub); // Convert String to date format
+		$diff = date_diff($date1, $date2);
+		return intval($diff->format("%R%a"));
 
 	}
 
@@ -102,6 +141,7 @@ class Users extends Database {
 	}
 
 
+	// Upddate user password
 	protected function UpdatePass($currentPassword, $hashedPassword, $username) {
 
 		
@@ -128,6 +168,41 @@ class Users extends Database {
 	}
 
 
+	// Activates subscription
+	protected function subscription($subCode, $username) {
+
+		$sub = $this->subActiveCheck($username);
+
+		if ($sub <= 0) {
+
+			$date = new DateTime(); // Get current date
+			$date->add(new DateInterval('P32D')); // Adds 32 days
+			$subTime = $date->format('Y-m-d'); // Format Year-Month-Day
+	
+			$this->prepare('UPDATE `users` SET `sub` = ? WHERE `username` = ?');
+			
+			if ($this->statement->execute([$subTime, $username])) {
+	
+				// Delete the sub code 
+				$this->prepare('DELETE FROM `subscription` WHERE `code` = ?');
+				$this->statement->execute([$subCode]);
+				return 'Your subscription is now active!';
+	
+			} else {
+
+				return 'Something went wrong';
+
+			}
+
+		} else {
+
+			return 'You already have an active subscription!';
+		
+		}
+
+	}
+
+
 	// Get number of users
 	protected function userCount() {
 		
@@ -139,7 +214,7 @@ class Users extends Database {
 	}
 
 
-	// Get number of users
+	// Get number of banned users
 	protected function bannedUserCount() {
 		
 		$this->prepare('SELECT * FROM `users` WHERE `banned` =  1');
@@ -150,18 +225,21 @@ class Users extends Database {
 	}
 
 	
-	// Get number of users
+	// Get number of users with sub
 	protected function activeUserCount() {
 		
-		$this->prepare('SELECT * FROM `users` WHERE `active` = 1');
-		$this->statement->execute();
+		$date = new DateTime(); // Get current date
+		$currentDate = $date->format('Y-m-d'); // Format Year-Month-Day
+
+		$this->prepare('SELECT * FROM `users` WHERE `sub` > CURRENT_DATE()');
+		$this->statement->execute([$currentDate]);
 		$result = $this->statement->rowCount();
 		return $result;
 
 	}
 
 
-	// Get name of latest
+	// Get name of latest registered user
 	protected function newUser() {
 		
 		$this->prepare('SELECT `username` FROM `users` WHERE `uid` = (SELECT MAX(`uid`) FROM `users`)');

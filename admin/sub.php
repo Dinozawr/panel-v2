@@ -10,7 +10,7 @@ Session::init();
 
 $username = Session::get("username");
 
-$invList = $admin->getInvCodeArray();
+$subList = $admin->getSubCodeArray();
 
 Util::adminCheck();
 Util::head('Admin Panel');
@@ -20,11 +20,11 @@ Util::navbar();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-	if (isset($_POST["genInv"])) {
-		$admin->getInvCodeGen($username); 
+	if (isset($_POST["genSub"])) {
+		$admin->getSubCodeGen($username); 
 	}
 
-	header("location: invites.php");
+	header("location: sub.php");
 
 }
 ?>
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 								
-					<button name="genInv" type="submit" class="btn btn-outline-primary btn-sm">
-						Gen Inv
+					<button name="genSub" type="submit" class="btn btn-outline-primary btn-sm">
+						Gen Subscription code
 					</button>
 
 				</form>
@@ -53,25 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				<thead>
 					<tr>
-						<th scope="col" class="text-center">UID</th>
 						<th scope="col">Code</th>
-						<th scope="col" class="text-center">Used</th>
 						<th scope="col">Created By</th>
 					</tr>
 				</thead>
 				<tbody>
 
-					<?php foreach ($invList as $row) : ?>
+					<?php foreach ($subList as $row) : ?>
 						<tr>
-							<th scope="row" class="text-center"><?php Util::display($row->uid); ?></th>
 							<td><?php Util::display($row->code); ?></td>
-							<td class="text-center">
-								<?php if ($row->used == 1) : ?>
-									<i class="fas fa-check-circle"></i>
-								<?php else : ?>
-									<i class="fas fa-times-circle"></i>
-								<?php endif; ?>
-							</td>
 							<td><?php Util::display($row->createdBy); ?></td>
 						</tr>
 					<?php endforeach; ?>

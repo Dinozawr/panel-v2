@@ -8,7 +8,6 @@ $admin = new AdminController;
 
 Session::init();
 
-$uid = Session::get("uid");
 $username = Session::get("username");
 
 $userList = $admin->getUserArray();
@@ -23,11 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_POST["resetHWID"])) { 
 		$rowUID = $_POST['resetHWID'];
 		$admin->resetHWID($rowUID); 
-	}
-
-	if (isset($_POST["setActive"])) { 
-		$rowUID = $_POST['setActive'];
-		$admin->setActive($rowUID); 
 	}
 
 	if (isset($_POST["setBanned"])) { 
@@ -64,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 						<th scope="col" class="text-center">Admin</th>
 
-						<th scope="col" class="text-center">Sub active</th>
-
 						<th scope="col" class="text-center">Banned</th>
 
 						<th scope="col">Actions</th>
@@ -93,14 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</td>
 
 							<td class="text-center">
-								<?php if ($row->active == 1) : ?>
-									<i class="fas fa-check-circle"></i>
-								<?php else : ?>
-									<i class="fas fa-times-circle"></i>
-								<?php endif; ?>
-							</td>
-
-							<td class="text-center">
 								<?php if ($row->banned == 1) : ?>
 									<i class="fas fa-check-circle"></i>
 								<?php else : ?>
@@ -113,10 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								
 									<button value="<?php Util::display($row->uid); ?>" name="resetHWID"  title="Reset HWID" data-toggle="tooltip" data-placement="top" class="btn btn-sm text-white" type="submit">
 										<i class="fas fa-microchip"></i>
-									</button>
-
-									<button value="<?php Util::display($row->uid); ?>" name="setActive"  title="Set active/inactive" data-toggle="tooltip" data-placement="top" class="btn btn-sm text-white" type="submit">
-										<i class="fas fa-ticket-alt"></i>
 									</button>
 
 									<button value="<?php Util::display($row->uid); ?>" name="setBanned"  title="Ban/unban user" data-toggle="tooltip" data-placement="top" class="btn btn-sm text-white" type="submit">

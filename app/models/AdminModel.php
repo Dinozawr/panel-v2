@@ -54,7 +54,35 @@ class Admin extends Database {
 		}
 
 	}
+	
 
+	// Get array of all subscription codes
+	protected function subCodeArray() {
+
+		if (Session::isAdmin()) {
+
+			$this->prepare('SELECT * FROM `subscription`');
+			$this->statement->execute();
+
+			$result = $this->statement->fetchAll();
+			return $result;
+
+		}
+
+	}
+
+
+	// Create subscription code
+	protected function subCodeGen($code, $createdBy) {
+
+		if (Session::isAdmin()) {
+			
+			$this->prepare('INSERT INTO `subscription` (`code`, `createdBy`) VALUES (?, ?)');
+			$this->statement->execute([$code, $createdBy]);
+			
+		}
+
+	}
 
 	// Resets HWID
 	protected function HWID($uid) {
@@ -64,32 +92,6 @@ class Admin extends Database {
 			$this->prepare('UPDATE `users` SET `hwid` = NULL WHERE `uid` = ?');
 			$this->statement->execute([$uid]);
 
-		}
-
-	}
-
-
-	// Set user active / inactive
-	protected function active($uid) {
-		
-		if (Session::isAdmin()) {
-
-			$this->prepare('SELECT `active` FROM `users` WHERE `uid` = ?');
-			$this->statement->execute([$uid]);
-			$result = $this->statement->fetch();
-
-			if ($result->active == 0) {
-
-				$this->prepare('UPDATE `users` SET `active` = 1 WHERE `uid` = ?');
-				$this->statement->execute([$uid]);
-	
-			} else {
-	
-				$this->prepare('UPDATE `users` SET `active` = 0 WHERE `uid` = ?');
-				$this->statement->execute([$uid]);
-	
-			}
-			
 		}
 
 	}

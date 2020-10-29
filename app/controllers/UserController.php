@@ -16,7 +16,6 @@ class UserController extends Users {
 		Session::set("username", $user->username);
 		//Session::set("hwid", $user->hwid);
 		Session::set("admin", $user->admin);
-		Session::set("active", $user->active);
 		Session::set("banned", $user->banned);
 		//Session::set("invitedBy", $user->invitedBy);
 		//Session::set("createdBy", $user->createdBy);
@@ -186,7 +185,43 @@ class UserController extends Users {
 	}
 
 
-	public function UpdateUserPass($data) {
+	public function activateSub($data) {
+
+		// Bind data
+		$username = Session::get("username");
+		$subCode = $data['subCode'];
+
+		// Empty error vars
+		$subCodeError = '';
+
+		if (empty($subCode)) {
+
+			return $subCodeError = 'Please enter a code.';
+
+		} else {
+
+			$subCodeExists = $this->subCodeCheck($subCode);
+
+			if ($subCodeExists == false) {
+
+				return $subCodeError  = "Subscription code is invalid.";
+
+			} 
+
+		}
+
+		if (empty($subCodeError)) {
+
+			return $this->subscription($subCode, $username);
+
+		}
+
+		
+
+	}
+
+
+	public function updateUserPass($data) {
 		
 		$username = Session::get("username");
 		$currentPassword = $data['currentPassword'];
@@ -267,6 +302,15 @@ class UserController extends Users {
 
 	public function getNewUser() {
 		return $this->newUser();
+	}
+
+
+	public function getSubStatus() {
+		
+		// Bind data
+		$username = Session::get("username");
+		return $this->subActiveCheck($username);
+
 	}
 
 }
