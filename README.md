@@ -28,11 +28,14 @@
 ###### AUTH
 * Login
 * Register (Invite only)
+###### USER
+* Change password
+* Activate subscription with code (32 days)
 ###### ADMIN PANEL
 * Generate invite code
+* Generate subscription code
 * Ban/unban user
 * Make user admin/non-admin
-* Activate/deactivate sub
 * Reset HWID
 
 ---
@@ -53,9 +56,9 @@
 ---
 
 ### Installation 
-> Change DB info in core/Database.php <br>
-> Import DB.sql file <br>
-> Change Site info in core/Config.php 
+* Change DB info in core/Database.php <br>
+* Import DB.sql file <br>
+* Change Site info in core/Config.php 
 
 ---
 
