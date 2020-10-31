@@ -95,11 +95,12 @@ Util::navbar();
 
 									Sub:
 									<p class="float-right mb-0">
-										<?php if ($sub > 0) : ?>
-											<i class="fas fa-check-circle"></i>
-										<?php else : ?>
-											<i class="fas fa-times-circle"></i>
-										<?php endif; ?>
+										<?php 
+										if ($sub > 0) { 
+											Util::display($sub . ' days'); 
+										} else {
+											Util::display('0 days'); 
+										} ?>
 									</p>
 
 								</div>
