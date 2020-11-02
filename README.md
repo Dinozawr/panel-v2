@@ -2,7 +2,8 @@
 <h1 align="center">znix.cc WebPanel</h1>
 <p align="center">Web Panel for your CS:GO cheat.</p>
 
-> Contribution is greatly appriciated. Make a pull request or message me on discord znix#1337 (don't add me just message me).
+> Contribution is greatly appriciated. <br />
+> Wanna talk? Join: https://discord.gg/9Ef5t2fMkk
 
 
 ### Overview
