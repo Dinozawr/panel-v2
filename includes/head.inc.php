@@ -5,6 +5,12 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#e14eca"> 
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="<?php echo($title); ?>" />
+	<meta property="og:url" content="<?php echo(SITE_URL); ?>" />
+	<meta property="og:description" content="<?php echo(SITE_DESC); ?>" />
+	<meta property="og:image" content="" />
 	
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
