@@ -1,8 +1,8 @@
-<h2 align="center">This repo is W.I.P, this is no where near to the final product.</h2>
-<h1 align="center">znix.cc WebPanel</h1>
+<h1 align="center">znix.cc WebPanel W.I.P</h1>
 <p align="center">Web Panel for your CS:GO cheat.</p>
 
 > Contribution is greatly appriciated. <br />
+> Default login: `admin:admin` <br />
 > Wanna talk? Join: https://discord.gg/9Ef5t2fMkk
 
 
