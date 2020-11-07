@@ -38,6 +38,9 @@
 * Ban/unban user
 * Make user admin/non-admin
 * Reset HWID
+* Set cheat detected/undetected
+* Set maintenance/non-maintenance
+* Set cheat version
 
 ---
 
