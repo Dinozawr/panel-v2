@@ -71,4 +71,28 @@ class AdminController extends Admin {
 
 	}
 
+
+	//
+	public function setCheatStatus() {
+
+		return $this->cheatStatus();
+		
+	}
+
+
+	//
+	public function setCheatMaint() {
+
+		return $this->cheatMaint();
+
+	}
+
+
+	//
+	public function setCheatVersion($data) {
+
+		return $this->cheatVersion($data);
+
+	}
+
 }

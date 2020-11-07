@@ -6,7 +6,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `cheat`;
 CREATE TABLE IF NOT EXISTS `cheat` (
   `status` int(1) NOT NULL DEFAULT 0,
-  `version` int(1) NOT NULL DEFAULT 0,
+  `version` float NOT NULL DEFAULT 0,
   `maintenance` int(1) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 COMMIT;
 
 INSERT INTO `users` (`uid`, `username`, `password`, `hwid`, `admin`, `sub`,`banned`, `invitedBy`, `createdAt`) VALUES
-(1, 'admin', '$2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK', NULL, 1, '2020-10-29', 0, '', '2020-10-20 08:29:37');
+(1, 'admin', '$2y$10$X3K9Vm/RBWfTl.drTi4//OtiyB.s9uaRmia0q2sLzjaET.im3sfvu', NULL, 1, '2020-10-29', 0, '', '2020-10-20 08:29:37');
 COMMIT;
 
 INSERT INTO `cheat` (`status`, `version`, `maintenance`) VALUES

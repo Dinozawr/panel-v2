@@ -17,7 +17,6 @@
 	
 	<meta property="twitter:description" content="<?php echo(SITE_DESC); ?>" />
 	<meta property="twitter:title" content="<?php echo($title); ?>" />
-
 	
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">

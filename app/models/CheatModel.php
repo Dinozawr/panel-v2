@@ -15,6 +15,8 @@ class Cheat extends Database {
 		$this->statement->execute();
 		$result = $this->statement->fetch();
 
+
+		// Status
 		if ($result->status == 0) {
 
 			$result->status = 'Undetected';
@@ -24,6 +26,19 @@ class Cheat extends Database {
 			$result->status = 'Detected';
 
 		}
+
+		
+		// Maintenance
+		if ($result->maintenance == 0) {
+
+			$result->maintenance = '-';
+
+		} else {
+
+			$result->maintenance = 'UNDER';
+
+		}
+
 
 		return $result;
 

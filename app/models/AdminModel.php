@@ -148,4 +148,69 @@ class Admin extends Database {
 
 	}
 
+
+	//
+	protected function cheatStatus() {
+
+		if (Session::isAdmin()) {
+
+			$this->prepare('SELECT `status` FROM `cheat`');
+			$this->statement->execute();
+			$result = $this->statement->fetch();
+	
+			if ($result->status == 0) {
+	
+				$this->prepare('UPDATE `cheat` SET `status` = 1');
+				$this->statement->execute();
+	
+			} else {
+	
+				$this->prepare('UPDATE `cheat` SET `status` = 0');
+				$this->statement->execute();
+	
+			}
+
+		}
+
+	}
+
+
+	//
+	protected function cheatMaint() {
+
+		if (Session::isAdmin()) {
+		
+			$this->prepare('SELECT `maintenance` FROM `cheat`');
+			$this->statement->execute();
+			$result = $this->statement->fetch();
+
+			if ($result->maintenance == 0) {
+
+				$this->prepare('UPDATE `cheat` SET `maintenance` = 1');
+				$this->statement->execute();
+
+			} else {
+
+				$this->prepare('UPDATE `cheat` SET `maintenance` = 0');
+				$this->statement->execute();
+
+			}
+		
+		}
+
+	}
+
+
+	//
+	protected function cheatVersion($ver) {
+
+		if (Session::isAdmin()) {
+		
+			$this->prepare('UPDATE `cheat` SET `version` = ?');
+			$this->statement->execute([$ver]);
+		
+		}
+
+	}
+
 }
