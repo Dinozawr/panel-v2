@@ -10,5 +10,5 @@ define('SITE_NAME', 'znix.cc');
 // Website Description
 define('SITE_DESC', 'CS:GO Private Cheat | Invite Only');
 
-// Website Keywords
-define('SITE_KEYW', 'znix.cc, znixhook, znix, cheat, private cheat, csgo');
+// Loader link // From Root folder
+define('LOADER_URL', SITE_ROOT.'/x.exe');

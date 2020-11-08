@@ -54,6 +54,16 @@ Util::navbar();
 					<div class="col-12 clearfix">
 						Version: <p class="float-right mb-0"><?php Util::display($cheat->getCheatData()->version); ?></p>
 					</div>
+	
+					<!-- Check if has sub --> 
+					<?php if ($user->getSubStatus() > 0) : ?>
+						<div class="col-12 text-center pt-1">
+							<div class="border-top border-secondary pt-1">
+
+							<a href="/download.php">Download Loader</a>
+							</div>
+						</div>
+					<?php endif; ?>
 
 				</div>
 			</div>
