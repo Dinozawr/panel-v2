@@ -1,10 +1,11 @@
-<h1 align="center">znix.cc WebPanel W.I.P</h1>
+<h1 align="center">Web Panel W.I.P</h1>
 <p align="center">Web Panel for your CS:GO cheat.</p>
 
 > Contribution is greatly appriciated. <br />
 > Default login: `admin:admin` <br />
 > Wanna talk? Join: https://discord.gg/9Ef5t2fMkk
 
+---
 
 ### Overview
 <p align="center">
@@ -32,6 +33,7 @@
 ###### USER
 * Change password
 * Activate subscription with code (32 days)
+* Download loader (Needs a sub)
 ###### ADMIN PANEL
 * Generate invite code
 * Generate subscription code
