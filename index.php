@@ -25,7 +25,7 @@ Util::navbar();
 		<!--Welome message-->
 		<div class="col-12 mt-3 mb-2">
 			<div class="alert alert-primary" role="alert">
-				Welcome, <b><?php Util::display($username) ?></b>
+				Welcome back, <a href="/profile.php"><b><?php Util::display($username) ?></b></a>.
 			</div>
 		</div>
 
