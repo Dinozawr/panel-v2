@@ -44,10 +44,11 @@
 * Set maintenance/non-maintenance
 * Set cheat version
 ###### API
+###### Note: User pass and hwid has to be sent in base64 format.
 * Sends user data in JSON format on call
 	* Usage: `api.php?user={username}&pass={password}&hwid={hwid}&key={key}`
 	* Example: `api.php?user=admin&pass=YWRtaW4=&hwid=aHdpZA==&key=yes`
-	* Note: User pass and hwid has to be sent in base64 format.
+
 ---
 
 ### Functions 
