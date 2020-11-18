@@ -7,6 +7,7 @@ require_once SITE_ROOT . '/app/models/AdminModel.php';
 
 class AdminController extends Admin {
 
+	
 	//
 	public function getUserArray() {
 		

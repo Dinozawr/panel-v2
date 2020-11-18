@@ -205,10 +205,10 @@ class Admin extends Database {
 	protected function cheatVersion($ver) {
 
 		if (Session::isAdmin()) {
-		
+
 			$this->prepare('UPDATE `cheat` SET `version` = ?');
 			$this->statement->execute([$ver]);
-		
+	
 		}
 
 	}

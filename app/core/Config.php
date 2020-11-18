@@ -12,3 +12,6 @@ define('SITE_DESC', 'CS:GO Private Cheat | Invite Only');
 
 // Loader link // From Root folder
 define('LOADER_URL', SITE_ROOT.'/x.exe');
+
+// API key
+define('API_KEY', 'yes');
