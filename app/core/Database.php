@@ -12,10 +12,19 @@ class Database {
 
 	protected function connect() {
 
-		$dsn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
-		$pdo = new PDO($dsn, $this->dbUser, $this->dbPass);
-		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-		return $pdo;
+		try {
+			
+			$dsn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
+			$pdo = new PDO($dsn, $this->dbUser, $this->dbPass);
+			$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+			return $pdo;
+			
+		} catch(PDOException $e) {
+
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+
+		}
 
 	}
 
