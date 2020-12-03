@@ -32,47 +32,24 @@ class Session {
 	}
 
 
+
 	public static function isLogged() {
 
-		if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+		return (isset($_SESSION["login"]) && $_SESSION["login"] === true) ? true : false;
 
 	}
 
 
 	public static function isAdmin() {
 
-		if (isset($_SESSION["login"]) && $_SESSION["admin"] == 1) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+		return (isset($_SESSION["login"]) && $_SESSION["admin"] == 1) ? true : false;
 
 	}
 
 
 	public static function isBanned() {
 
-		if (isset($_SESSION["login"]) && $_SESSION["banned"] == 1 && $_SESSION["admin"] == 0) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+		return (isset($_SESSION["login"]) && $_SESSION["banned"] == 1 && $_SESSION["admin"] == 0) ? true : false;
 
 	}
 		
