@@ -3,8 +3,9 @@
 class Session {
 
     public static function init() {
-
-		session_start();
+		
+	    	// This will make it only run on HTTPs protocol.
+		session_start(['cookie_lifetime' => 0,'cookie_secure' => true,'cookie_httponly' => true]);
 			
 	}
 
