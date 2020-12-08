@@ -12,14 +12,10 @@ CREATE TABLE IF NOT EXISTS `cheat` (
 
 DROP TABLE IF EXISTS `invites`;
 CREATE TABLE IF NOT EXISTS `invites` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL,
-  `used` int(1) NOT NULL DEFAULT 0,
   `createdBy` varchar(255) NOT NULL,
   `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `code` (`code`),
-  UNIQUE KEY `uid` (`uid`)
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `subscription`;
