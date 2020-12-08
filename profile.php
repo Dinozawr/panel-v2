@@ -8,7 +8,7 @@ Session::init();
 
 if (!Session::isLogged()) { Util::redirect('/login.php'); }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if (isset($_POST["updatePassword"])) {
 		$error = $user->updateUserPass($_POST);

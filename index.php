@@ -30,11 +30,23 @@ Util::navbar();
 		</div>
 
 
-		<!--Chatbox-->
+		<!--Statistics-->
 		<div class="col-lg-9 col-md-12">
 			<div class="rounded p-3 mb-3">
-				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-comments"></i> Chatbox</div>
-				Debug: <?php print_r($user->getNewUser()); ?>
+				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-chart-area"></i> Statistics</div>
+				<div class="row text-muted">
+
+					<!--Total Users-->
+					<div class="col-12 clearfix">
+						Users: <p class="float-right mb-0"><?php Util::display($user->getUserCount()); ?></p>
+					</div>
+
+					<!--Latest User-->
+					<div class="col-12 clearfix">
+						Latest User: <p class="float-right mb-0"><?php Util::display($user->getNewUser()); ?></p>
+					</div>
+
+				</div>
 			</div>
 		</div>
 
@@ -69,26 +81,6 @@ Util::navbar();
 			</div>
 		</div>
 
-
-		<!--Statistics-->
-		<div class="col-12">
-			<div class="rounded p-3 mb-3">
-				<div class="h5 border-bottom border-secondary pb-1"><i class="fas fa-chart-area"></i> Statistics</div>
-				<div class="row text-muted">
-
-					<!--Total Users-->
-					<div class="col-12 clearfix">
-						Users: <p class="float-right mb-0"><?php Util::display($user->getUserCount()); ?></p>
-					</div>
-
-					<!--Latest User-->
-					<div class="col-12 clearfix">
-						Latest User: <p class="float-right mb-0"><?php Util::display($user->getNewUser()); ?></p>
-					</div>
-
-				</div>
-			</div>
-		</div>
 
 
 	</div>

@@ -6,7 +6,7 @@ $user = new UserController;
 Session::init();
 
 if (Session::isLogged()) { Util::redirect('/'); }
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { $error = $user->loginUser($_POST); }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { $error = $user->loginUser($_POST); }
 
 Util::head('Login');
 Util::navbar();

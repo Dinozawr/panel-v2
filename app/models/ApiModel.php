@@ -23,7 +23,7 @@ class API extends Database {
 			// If password is correct
 			if (password_verify($password, $hashedPassword)) {
 
-				if ($row->hwid == NULL) {
+				if ($row->hwid === NULL) {
 
 					$this->prepare('UPDATE `users` SET `hwid` = ? WHERE `username` = ?');
 					$this->statement->execute([$hwid, $username]);

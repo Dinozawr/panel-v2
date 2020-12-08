@@ -30,7 +30,7 @@ class Users extends Database {
 	// Check if invite code is valid
 	protected function invCodeCheck($invCode) {
 
-		$this->prepare('SELECT * FROM `invites` WHERE `code` = ? AND `used` = 0');
+		$this->prepare('SELECT * FROM `invites` WHERE `code` = ?');
 		$this->statement->execute([$invCode]);
 
 		if ($this->statement->rowCount() > 0) {
@@ -120,15 +120,16 @@ class Users extends Database {
 		$this->prepare('SELECT `createdBy` FROM `invites` WHERE `code` = ?');
 		$this->statement->execute([$invCode]);
 		$row = $this->statement->fetch();
+		$inviter = $row->createdBy;
 
 		// Sending the query - Register user
 		$this->prepare('INSERT INTO `users` (`username`, `password`, `invitedBy`) VALUES (?, ?, ?)');
 
 		// If user registered
-		if ($this->statement->execute([$username, $hashedPassword, $row->createdBy])) {
+		if ($this->statement->execute([$username, $hashedPassword, $inviter])) {
 
-			// Set invite code to used
-			$this->prepare('UPDATE `invites` SET `used` = 1 WHERE `code` = ?');
+			// Delete invite code // used
+			$this->prepare('DELETE FROM `invites` WHERE `code` = ?');
 			$this->statement->execute([$invCode]);
 			return true;
 
@@ -142,7 +143,7 @@ class Users extends Database {
 
 
 	// Upddate user password
-	protected function UpdatePass($currentPassword, $hashedPassword, $username) {
+	protected function updatePass($currentPassword, $hashedPassword, $username) {
 
 		
 

@@ -10,13 +10,13 @@ class UserController extends Users {
 
 	public function createUserSession($user) {
 
-		Session::init();
+		//Session::init();
 		Session::set("login", true);
-		Session::set("uid", $user->uid);
+		Session::set("uid", (int) $user->uid);
 		Session::set("username", $user->username);
 		//Session::set("hwid", $user->hwid);
-		Session::set("admin", $user->admin);
-		Session::set("banned", $user->banned);
+		Session::set("admin", (int) $user->admin);
+		Session::set("banned", (int) $user->banned);
 		//Session::set("invitedBy", $user->invitedBy);
 		//Session::set("createdBy", $user->createdBy);
 
@@ -26,6 +26,7 @@ class UserController extends Users {
 	public function logoutUser() {
 
 		session_unset();
+		$_SESSION = array();
 		session_destroy();
 
 	}
@@ -64,7 +65,7 @@ class UserController extends Users {
 
 			// Check if username exists
 			$userExists = $this->usernameCheck($username);
-			if ($userExists == true) {
+			if ($userExists) {
 
 				return $userError  = "Username already exists, try another.";
 	
@@ -107,7 +108,7 @@ class UserController extends Users {
 			// Check if invite code is valid
 			$invCodeExists = $this->invCodeCheck($invCode);
 
-			if ($invCodeExists == false) {
+			if (!$invCodeExists) {
 
 				return $invCodeError  = "Invite code is invalid or already used.";
 
@@ -191,43 +192,36 @@ class UserController extends Users {
 		$username = Session::get("username");
 		$subCode = $data['subCode'];
 
-		// Empty error vars
-		$subCodeError = '';
-
 		if (empty($subCode)) {
 
-			return $subCodeError = 'Please enter a code.';
+			return 'Please enter a code.';
 
 		} else {
 
 			$subCodeExists = $this->subCodeCheck($subCode);
 
-			if ($subCodeExists == false) {
+			if ($subCodeExists) {
 
-				return $subCodeError  = "Subscription code is invalid.";
+				return $this->subscription($subCode, $username);
 
-			} 
+			} else {
 
-		}
-
-		if (empty($subCodeError)) {
-
-			return $this->subscription($subCode, $username);
+				return 'Subscription code is invalid.';
+				
+			}
 
 		}
-
-		
 
 	}
 
 
 	public function updateUserPass($data) {
-		
+
+		// Bind data
 		$username = Session::get("username");
 		$currentPassword = $data['currentPassword'];
 		$newPassword = $data['newPassword'];
 		$confirmPassword = $data['confirmPassword'];
-
 
 		// Empty error vars
 		$passError = "";
@@ -268,7 +262,7 @@ class UserController extends Users {
 
 			// Hashing the password
 			$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-			$result = $this->UpdatePass($currentPassword, $hashedPassword, $username);
+			$result = $this->updatePass($currentPassword, $hashedPassword, $username);
 
 			if ($result) {
 

@@ -17,27 +17,11 @@ class Cheat extends Database {
 
 
 		// Status
-		if ($result->status == 0) {
-
-			$result->status = 'Undetected';
-
-		} else {
-
-			$result->status = 'Detected';
-
-		}
+		$result->status = ($result->status === 0) ? 'Undetected' : 'Detected';
 
 		
 		// Maintenance
-		if ($result->maintenance == 0) {
-
-			$result->maintenance = '-';
-
-		} else {
-
-			$result->maintenance = 'UNDER';
-
-		}
+		$result->maintenance = ($result->maintenance === 0) ? '-' : 'UNDER';
 
 
 		return $result;

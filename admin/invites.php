@@ -17,7 +17,7 @@ Util::head('Admin Panel');
 Util::navbar();
 
 // if post request 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 	if (isset($_POST["genInv"])) {
@@ -53,9 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				<thead>
 					<tr>
-						<th scope="col" class="text-center">UID</th>
 						<th scope="col">Code</th>
-						<th scope="col" class="text-center">Used</th>
 						<th scope="col">Created By</th>
 					</tr>
 				</thead>
@@ -63,15 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					<?php foreach ($invList as $row) : ?>
 						<tr>
-							<th scope="row" class="text-center"><?php Util::display($row->uid); ?></th>
 							<td><?php Util::display($row->code); ?></td>
-							<td class="text-center">
-								<?php if ($row->used == 1) : ?>
-									<i class="fas fa-check-circle"></i>
-								<?php else : ?>
-									<i class="fas fa-times-circle"></i>
-								<?php endif; ?>
-							</td>
 							<td><?php Util::display($row->createdBy); ?></td>
 						</tr>
 					<?php endforeach; ?>

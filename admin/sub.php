@@ -17,7 +17,7 @@ Util::head('Admin Panel');
 Util::navbar();
 
 // if post request 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 	if (isset($_POST["genSub"])) {
