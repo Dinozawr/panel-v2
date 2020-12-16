@@ -1,7 +1,7 @@
 
 		<footer class="fixed-bottom text-right pb-3 pr-5">
 			<small>
-				<span class="align-middle text-decoration-none">Made with <i class="fas fa-heart"></i> by <a href="https://twitter.com/znixhook">znix</a></span>
+				<span class="align-middle text-decoration-none">Made with <i class="fas fa-heart"></i> by <a href="https://twitter.com/znixbtw">znix</a></span>
 			</small>
 		</footer>
 
