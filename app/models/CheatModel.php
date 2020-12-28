@@ -17,11 +17,11 @@ class Cheat extends Database {
 
 
 		// Status
-		$result->status = ($result->status === 0) ? 'Undetected' : 'Detected';
+		$result->status = ((int)$result->status === 0) ? 'Undetected' : 'Detected';
 
 		
 		// Maintenance
-		$result->maintenance = ($result->maintenance === 0) ? '-' : 'UNDER';
+		$result->maintenance = ((int)$result->maintenance === 0) ? '-' : 'UNDER';
 
 
 		return $result;

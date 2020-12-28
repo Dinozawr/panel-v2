@@ -106,7 +106,7 @@ class Admin extends Database {
 			$this->statement->execute([$uid]);
 			$result = $this->statement->fetch();
 
-			if ($result->banned === 0) {
+			if ((int)$result->banned === 0) {
 
 				$this->prepare('UPDATE `users` SET `banned` = 1 WHERE `uid` = ?');
 				$this->statement->execute([$uid]);
@@ -132,7 +132,7 @@ class Admin extends Database {
 			$this->statement->execute([$uid]);
 			$result = $this->statement->fetch();
 
-			if ($result->admin === 0) {
+			if ((int)$result->admin === 0) {
 
 				$this->prepare('UPDATE `users` SET `admin` = 1 WHERE `uid` = ?');
 				$this->statement->execute([$uid]);
@@ -158,7 +158,7 @@ class Admin extends Database {
 			$this->statement->execute();
 			$result = $this->statement->fetch();
 	
-			if ($result->status === 0) {
+			if ((int)$result->status === 0) {
 	
 				$this->prepare('UPDATE `cheat` SET `status` = 1');
 				$this->statement->execute();
@@ -184,7 +184,7 @@ class Admin extends Database {
 			$this->statement->execute();
 			$result = $this->statement->fetch();
 
-			if ($result->maintenance === 0) {
+			if ((int)$result->maintenance === 0) {
 
 				$this->prepare('UPDATE `cheat` SET `maintenance` = 1');
 				$this->statement->execute();
