@@ -228,12 +228,9 @@ class Users extends Database {
 	
 	// Get number of users with sub
 	protected function activeUserCount() {
-		
-		$date = new DateTime(); // Get current date
-		$currentDate = $date->format('Y-m-d'); // Format Year-Month-Day
 
 		$this->prepare('SELECT * FROM `users` WHERE `sub` > CURRENT_DATE()');
-		$this->statement->execute([$currentDate]);
+		$this->statement->execute();
 		$result = $this->statement->rowCount();
 		return $result;
 
